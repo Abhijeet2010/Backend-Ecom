@@ -1,6 +1,11 @@
 const jwt = require("jsonwebtoken");
+const express = require("express");
+const app = express();
 const RegisterModel = require("../models/userSchema");
+const cookieParser = require("cookie-parser");
 const secKey = "Abhijeet";
+
+app.use(cookieParser());
 
 const auth = async (req, res, next) => {
   try {
@@ -9,7 +14,7 @@ const auth = async (req, res, next) => {
     const verifyToken = jwt.verify(token, secKey);
 
     console.log(verifyToken);
-    const rootUser = await RegisterModel.findOne({ id: verifyToken._id });
+    const rootUser = await RegisterModel.findOne({ _id: verifyToken.id });
 
     if (!rootUser) {
       res.status(400).json({ Error: "User Not Found" });
