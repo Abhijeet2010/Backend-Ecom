@@ -13,7 +13,7 @@ app.use(
     credentials: true,
     origin: [
       "https://effervescent-starlight-de0f94.netlify.app",
-      "http://localhost:3000/",
+      "http://localhost:3000",
     ],
   })
 );
