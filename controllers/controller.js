@@ -56,7 +56,7 @@ const login = async (req, res) => {
 
         res.status(200).json({
           message: "user Login suceesfully",
-          validateEmail,
+          username: validateEmail.username,
         });
       }
     } else {
