@@ -47,15 +47,15 @@ const login = async (req, res) => {
       } else {
         const token = await jwt.sign({ id: validateEmail._id }, secKey);
 
-        res
-          .cookie("jwtToken", token, {
-            expires: new Date(Date.now() + 500000),
-          })
-          .json(validateEmail);
+        res.cookie("jwtToken", token, {
+          expires: new Date(Date.now() + 500000),
+          secure: true,
+          httpOnly: true,
+        });
 
-        // res.status(200).json({
-        //   message: "user Login suceesfully",
-        // });
+        res.status(200).json({
+          message: "user Login suceesfully",
+        });
       }
     } else {
       res.status(400).json({ Error: "wrong Details Email" });

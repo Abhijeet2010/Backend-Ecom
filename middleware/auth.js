@@ -5,7 +5,7 @@ const secKey = "Abhijeet";
 const auth = async (req, res, next) => {
   try {
     const token = req.cookies.jwtToken;
-
+    console.log(token);
     const verifyToken = jwt.verify(token, secKey);
 
     console.log(verifyToken);
@@ -14,9 +14,10 @@ const auth = async (req, res, next) => {
     if (!rootUser) {
       res.status(400).json({ Error: "User Not Found" });
     }
+
     req.token = token;
     req.rootUser = rootUser;
-    res.status(200).send(token);
+
     next();
   } catch (error) {
     console.log(error.message);
