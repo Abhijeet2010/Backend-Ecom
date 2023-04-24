@@ -5,6 +5,7 @@ const secKey = "Abhijeet";
 const auth = async (req, res, next) => {
   try {
     const token = req.cookies.jwtToken;
+
     const verifyToken = jwt.verify(token, secKey);
 
     console.log(verifyToken);
@@ -15,6 +16,7 @@ const auth = async (req, res, next) => {
     }
     req.token = token;
     req.rootUser = rootUser;
+    res.status(200).send(token);
     next();
   } catch (error) {
     console.log(error.message);
