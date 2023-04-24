@@ -11,7 +11,10 @@ app.use(express.json());
 app.use(
   cors({
     credentials: true,
-    origin: "https://effervescent-starlight-de0f94.netlify.app",
+    origin: [
+      "https://effervescent-starlight-de0f94.netlify.app",
+      "http://localhost:3000/",
+    ],
   })
 );
 app.use(router);
