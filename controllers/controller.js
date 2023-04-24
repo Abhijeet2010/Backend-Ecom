@@ -50,8 +50,6 @@ const login = async (req, res) => {
         res
           .cookie("jwtToken", token, {
             expires: new Date(Date.now() + 500000),
-            httpOnly: true,
-            secure: true,
           })
           .json(validateEmail);
 
