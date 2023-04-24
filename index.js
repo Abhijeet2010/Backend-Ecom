@@ -8,15 +8,12 @@ const router = require("./routes/route");
 const connection = require("./db/mongoose");
 
 app.use(express.json());
-app.use(
-  cors({
-    credentials: true,
-    origin: ["http://localhost:3000", "https://backend-ecom-uc6y.onrender.com"],
-  })
-);
+app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
 app.use(router);
 
 app.get("/", (req, res) => {
+  const token = req.cookies.jwt;
+  console.log(token);
   res.send({ message: "Hello Homepagee" });
 });
 
