@@ -19,6 +19,6 @@ router.post("/login", login);
 router.get("/about", auth, about);
 router.get("/products", auth, products);
 router.get("/logout", logout);
-router.get("/home", auth, home);
+router.get("/", auth, home);
 
 module.exports = router;
