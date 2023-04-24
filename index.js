@@ -8,7 +8,12 @@ const router = require("./routes/route");
 const connection = require("./db/mongoose");
 
 app.use(express.json());
-app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
+app.use(
+  cors({
+    credentials: true,
+    origin: "https://effervescent-starlight-de0f94.netlify.app",
+  })
+);
 app.use(router);
 
 app.get("/", (req, res) => {
